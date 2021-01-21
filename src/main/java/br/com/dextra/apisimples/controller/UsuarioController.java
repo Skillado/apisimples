@@ -26,7 +26,7 @@ public class UsuarioController {
         return (List<Usuario>) usuarioRepository.findAll();
     }
 
-    @RequestMapping(value = "/usuario/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/buscar/{id}", method = RequestMethod.GET)
     public ResponseEntity<Usuario> GetById(@PathVariable(value = "id") long id)
     {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
@@ -36,7 +36,7 @@ public class UsuarioController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "/usuario", method =  RequestMethod.POST)
+    @RequestMapping(value = "/criar-usuario", method =  RequestMethod.POST)
     public Usuario Post(@RequestBody Usuario usuario)
     {
         return usuarioRepository.save(usuario);
@@ -56,7 +56,7 @@ public class UsuarioController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "/usuario/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deletar-usuario/{id}", method = RequestMethod.GET)
     public ResponseEntity<Object> Delete(@PathVariable(value = "id") long id)
     {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
